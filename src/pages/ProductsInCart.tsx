@@ -29,20 +29,26 @@ export default function ProductsInCart({ cart }: ProductsProps) {
   const plusCount = (productId: number) => {
     setCount((prevCount) => ({
       ...prevCount,
-      [productId]: (prevCount[productId] || 0) + 1,
+      [productId]: (prevCount[productId] || 1) + 1,
     }));
-    console.log(count[productId]);
+    console.log(count);
   };
 
   const minusCount = (productId: number) => {
-    setCount((prevCount) => ({
-      ...prevCount,
-      [productId]: Math.max((prevCount[productId] || 0) - 1, 0),
-    }));
-    
-  
-    console.log(count[productId]);
-    
+    const updatedCount = Math.max((count[productId] || 0) - 1, 0);
+    if (updatedCount === 0) {
+      setCount((prevCount) => {
+        const newCount = { ...prevCount };
+        delete newCount[productId];
+        return newCount;
+      });
+    } else {
+      setCount((prevCount) => ({
+        ...prevCount,
+        [productId]: updatedCount,
+      }));
+    }
+    console.log(count);
   };
 
   return (
