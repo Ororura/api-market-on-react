@@ -24,14 +24,25 @@ interface ProductsProps {
 }
 
 export default function ProductsInCart({ cart }: ProductsProps) {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState<{ [key: number]: number }>({});
 
-  const plusCount = () => {
-    setCount(count + 1);
+  const plusCount = (productId: number) => {
+    setCount((prevCount) => ({
+      ...prevCount,
+      [productId]: (prevCount[productId] || 0) + 1,
+    }));
+    console.log(count[productId]);
   };
 
-  const minusCount = () => {
-    setCount(count - 1);
+  const minusCount = (productId: number) => {
+    setCount((prevCount) => ({
+      ...prevCount,
+      [productId]: Math.max((prevCount[productId] || 0) - 1, 0),
+    }));
+    
+  
+    console.log(count[productId]);
+    
   };
 
   return (
@@ -58,12 +69,24 @@ export default function ProductsInCart({ cart }: ProductsProps) {
           </p>
           <p>{product.price}$</p>
           <div className="product-counter">
-            <img className="plus" onClick={plusCount} src={plus} alt="" />
+            <img
+              className="plus"
+              onClick={() => plusCount(product.id)}
+              src={plus}
+              alt=""
+            />
             <p
               className="counter"
               style={{ fontSize: "18px", marginTop: "3px" }}
-            >{count}</p>
-            <img className="minus" onClick={minusCount} src={minus} alt="" />
+            >
+              {count[product.id] || 1}
+            </p>
+            <img
+              className="minus"
+              onClick={() => minusCount(product.id)}
+              src={minus}
+              alt=""
+            />
           </div>
         </div>
       ))}
