@@ -29,9 +29,10 @@ export default function ProductsInCart({
   count,
   setCount,
 }: ProductsProps) {
+  const filteredCart = cart.filter((product) => count[product.id] > 0);
   return (
     <div className="products-cart">
-      {cart.map((product) => (
+      {filteredCart.map((product) => (
         <CartProducts
           key={product.id}
           count={count}

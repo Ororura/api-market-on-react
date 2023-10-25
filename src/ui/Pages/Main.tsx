@@ -11,7 +11,6 @@ export default function Main() {
     const existingProduct = cart.find((el) => el.id === product.id);
     if (!existingProduct) {
       setCart([...cart, product]);
-      console.log(cart);
     }
   };
   return (

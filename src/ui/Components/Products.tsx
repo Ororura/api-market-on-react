@@ -31,8 +31,6 @@ export default function Products({
       [product.id]: true,
     }));
   };
-  
-  
 
   useEffect(() => {
     ProductsApi().then((response) => {
@@ -84,7 +82,7 @@ export default function Products({
             <div className="price">
               <img
                 className="add-prod"
-                src={click[product.id] ? filledVector : vector}
+                src={count[product.id] > 0 ? filledVector : vector}
                 alt=""
                 width="18"
                 height="20"

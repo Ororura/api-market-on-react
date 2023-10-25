@@ -15,7 +15,7 @@ export default function CartProducts({
   count,
   setCount,
 }: ProductsProps) {
-  
+
   const plusCount = (productId: number) => {
     setCount((prevCount) => ({
       ...prevCount,
@@ -35,6 +35,7 @@ export default function CartProducts({
       console.log("test");
     }
   }, [count]);
+  
 
   return (
     <div key={product.id} className="product-in-cart">
