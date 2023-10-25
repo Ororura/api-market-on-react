@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import plus from "../../photos/plus2.png";
 import minus from "../../photos/minus.png";
@@ -9,12 +9,14 @@ interface ProductsProps {
   count: { [key: number]: number };
   setCount: React.Dispatch<React.SetStateAction<{ [key: number]: number }>>;
 }
-export default function ProductInCart({
+
+export default function CartProducts({
   product,
   count,
   setCount,
 }: ProductsProps) {
   const plusCount = (productId: number) => {
+    console.log(count[1]);
     setCount((prevCount) => ({
       ...prevCount,
       [productId]: (prevCount[productId] || 1) + 1,
@@ -22,6 +24,7 @@ export default function ProductInCart({
   };
 
   const minusCount = (productId: number) => {
+    console.log(count[1]);
     const updatedCount = Math.max((count[productId] || 0) - 1, 0);
     if (updatedCount === 0) {
       setCount((prevCount) => {
@@ -36,6 +39,13 @@ export default function ProductInCart({
       }));
     }
   };
+
+  useEffect(() => {
+    if (count[1] == 0) {
+      console.log("test");
+    }
+  }, [count]);
+
   return (
     <div key={product.id} className="product-in-cart">
       <div className="img-frame">

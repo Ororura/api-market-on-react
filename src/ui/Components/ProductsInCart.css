@@ -33,7 +33,6 @@
 }
 
 .products-cart {
-  overflow: hidden;
   overflow: scroll;
   height: 70%;
 }

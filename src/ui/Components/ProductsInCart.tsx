@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ProductsInCart.css";
-import ProductInCart from "./CartProducts";
+import CartProducts from "./CartProducts";
 
 interface Product {
   id: number;
@@ -20,19 +20,24 @@ interface Rating {
 
 interface ProductsProps {
   cart: Product[];
+  count: { [key: number]: number };
+  setCount: React.Dispatch<React.SetStateAction<{ [key: number]: number }>>;
 }
 
-export default function ProductsInCart({ cart }: ProductsProps) {
-  const [count, setCount] = useState<{ [key: number]: number }>({});
+export default function ProductsInCart({
+  cart,
+  count,
+  setCount,
+}: ProductsProps) {
   return (
     <div className="products-cart">
       {cart.map((product) => (
-        <ProductInCart
+        <CartProducts
           key={product.id}
           count={count}
           setCount={setCount}
           product={product}
-        ></ProductInCart>
+        ></CartProducts>
       ))}
     </div>
   );

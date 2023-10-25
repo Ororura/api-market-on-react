@@ -7,10 +7,16 @@ import ProductsApi from "../../services/ProductsApi";
 import { Product } from "../../constants/interfaces";
 
 interface ProductsProps {
+  count: { [key: number]: number };
+  setCount: React.Dispatch<React.SetStateAction<{ [key: number]: number }>>;
   addToCart: (product: Product) => void;
 }
 
-export default function Products({ addToCart }: ProductsProps) {
+export default function Products({
+  addToCart,
+  count,
+  setCount,
+}: ProductsProps) {
   const [shopData, setShopData] = useState<Product[]>([]);
   const [click, setClick] = useState<{ [key: number]: boolean }>({});
 
