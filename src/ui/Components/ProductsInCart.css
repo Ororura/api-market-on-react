@@ -13,7 +13,7 @@
   text-align: center;
 }
 
-.product-in-cart::-webkit-scrollbar {
+.product-cart::-webkit-scrollbar {
   display: none;
 }
 
