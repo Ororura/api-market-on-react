@@ -22,12 +22,17 @@ export default function Products({
 
   const handleClick = (product: Product) => {
     addToCart(product);
-
+    setCount((prevCount) => ({
+      ...prevCount,
+      [product.id]: prevCount[product.id] ? prevCount[product.id] + 1 : 1,
+    }));
     setClick((prevStatus) => ({
       ...prevStatus,
       [product.id]: true,
     }));
   };
+  
+  
 
   useEffect(() => {
     ProductsApi().then((response) => {

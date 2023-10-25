@@ -15,29 +15,19 @@ export default function CartProducts({
   count,
   setCount,
 }: ProductsProps) {
+  
   const plusCount = (productId: number) => {
-    console.log(count[1]);
     setCount((prevCount) => ({
       ...prevCount,
-      [productId]: (prevCount[productId] || 1) + 1,
+      [productId]: prevCount[productId] + 1,
     }));
   };
 
   const minusCount = (productId: number) => {
-    console.log(count[1]);
-    const updatedCount = Math.max((count[productId] || 0) - 1, 0);
-    if (updatedCount === 0) {
-      setCount((prevCount) => {
-        const newCount = { ...prevCount };
-        delete newCount[productId];
-        return newCount;
-      });
-    } else {
-      setCount((prevCount) => ({
-        ...prevCount,
-        [productId]: updatedCount,
-      }));
-    }
+    setCount((prevCount) => ({
+      ...prevCount,
+      [productId]: prevCount[productId] - 1,
+    }));
   };
 
   useEffect(() => {
