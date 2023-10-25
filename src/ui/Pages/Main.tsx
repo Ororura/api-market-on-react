@@ -1,26 +1,10 @@
 import React from "react";
-import "../styles/App.css";
-import Sidebar from "./Sidebar";
-import Products from "./Products";
+import Sidebar from "../Components/Sidebar";
+import Products from "../Components/Products";
 import { useState } from "react";
+import { Product } from "../../constants/interfaces";
 
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  category: string;
-  image: string;
-  count: number;
-  rating: Rating;
-}
-
-interface Rating {
-  rate: number;
-  count: number;
-}
-
-function App() {
+export default function Main() {
   const [cart, setCart] = useState<Product[]>([]);
   const addToCart = (product: Product) => {
     const existingProduct = cart.find((el) => el.id === product.id);
@@ -35,5 +19,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

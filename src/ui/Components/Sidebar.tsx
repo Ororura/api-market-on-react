@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "../photos/logo.png";
-import "../styles/Sidebar.css";
+import logo from "../../photos/logo.png";
+import "./Sidebar.css";
 import ProductsInCart from "./ProductsInCart";
 
 interface Product {

@@ -1,25 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "../styles/Products.css";
-import vector from "../photos/vector.png";
-import filledVector from "../photos/filled_vector.png";
-import star from "../photos/star.png";
+import "./Products.css";
+import vector from "../../photos/vector.png";
+import filledVector from "../../photos/filled_vector.png";
+import star from "../../photos/star.png";
 import axios from "axios";
-
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  category: string;
-  image: string;
-  count: number;
-  rating: Rating;
-}
-
-interface Rating {
-  rate: number;
-  count: number;
-}
+import { Product } from "../../constants/interfaces";
 
 interface ProductsProps {
   addToCart: (product: Product) => void;
@@ -40,7 +25,9 @@ function Products({ addToCart }: ProductsProps) {
 
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then((response) => {
-      setShopData(response.data);
+      if (response) {
+        setShopData(response.data);
+      }
     });
   }, []);
 
