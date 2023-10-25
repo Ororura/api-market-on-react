@@ -3,14 +3,14 @@ import "./Products.css";
 import vector from "../../photos/vector.png";
 import filledVector from "../../photos/filled_vector.png";
 import star from "../../photos/star.png";
-import axios from "axios";
+import ProductsApi from "../../services/ProductsApi";
 import { Product } from "../../constants/interfaces";
 
 interface ProductsProps {
   addToCart: (product: Product) => void;
 }
 
-function Products({ addToCart }: ProductsProps) {
+export default function Products({ addToCart }: ProductsProps) {
   const [shopData, setShopData] = useState<Product[]>([]);
   const [click, setClick] = useState<{ [key: number]: boolean }>({});
 
@@ -24,7 +24,7 @@ function Products({ addToCart }: ProductsProps) {
   };
 
   useEffect(() => {
-    axios.get("https://fakestoreapi.com/products").then((response) => {
+    ProductsApi().then((response) => {
       if (response) {
         setShopData(response.data);
       }
@@ -87,5 +87,3 @@ function Products({ addToCart }: ProductsProps) {
     </div>
   );
 }
-
-export default Products;
