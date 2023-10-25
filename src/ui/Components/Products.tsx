@@ -18,17 +18,12 @@ export default function Products({
   setCount,
 }: ProductsProps) {
   const [shopData, setShopData] = useState<Product[]>([]);
-  const [click, setClick] = useState<{ [key: number]: boolean }>({});
 
   const handleClick = (product: Product) => {
     addToCart(product);
     setCount((prevCount) => ({
       ...prevCount,
       [product.id]: prevCount[product.id] ? prevCount[product.id] + 1 : 1,
-    }));
-    setClick((prevStatus) => ({
-      ...prevStatus,
-      [product.id]: true,
     }));
   };
 
