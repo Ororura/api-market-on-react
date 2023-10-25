@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./ProductsInCart.css";
-import CartProducts from "./CartProducts";
+import "./Cart.css";
+import Cart from "../ItemsInCart/ItemsInCart";
 
 interface Product {
   id: number;
@@ -33,12 +33,12 @@ export default function ProductsInCart({
   return (
     <div className="products-cart">
       {filteredCart.map((product) => (
-        <CartProducts
+        <Cart
           key={product.id}
           count={count}
           setCount={setCount}
           product={product}
-        ></CartProducts>
+        ></Cart>
       ))}
     </div>
   );

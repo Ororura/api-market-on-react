@@ -1,0 +1,8 @@
+.products-cart {
+  overflow: scroll;
+  height: 70%;
+}
+
+.products-cart::-webkit-scrollbar {
+  display: none;
+}

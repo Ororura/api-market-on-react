@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Products.css";
-import vector from "../../photos/vector.png";
-import filledVector from "../../photos/filled_vector.png";
-import star from "../../photos/star.png";
-import ProductsApi from "../../services/ProductsApi";
-import { Product } from "../../constants/interfaces";
+import vector from "../../../photos/vector.png";
+import filledVector from "../../../photos/filled_vector.png";
+import star from "../../../photos/star.png";
+import ProductsApi from "../../../services/ProductsApi";
+import { Product } from "../../../constants/interfaces";
 
 interface ProductsProps {
   count: { [key: number]: number };

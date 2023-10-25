@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "../../photos/logo.png";
+import logo from "../../../photos/logo.png";
 import "./Sidebar.css";
-import ProductsInCart from "./ProductsInCart";
+import Cart from "../Cart/Cart";
 
 interface Product {
   id: number;
@@ -31,11 +31,7 @@ function Sidebar({ cart, count, setCount }: ProductsProps) {
       <div className="icons-sidebar">
         <img id="logo" src={logo} width="60" height="64" alt=" " />
       </div>
-      <ProductsInCart
-        cart={cart}
-        count={count}
-        setCount={setCount}
-      ></ProductsInCart>
+      <Cart cart={cart} count={count} setCount={setCount}></Cart>
     </div>
   );
 }

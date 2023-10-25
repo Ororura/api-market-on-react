@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
+import "./ItemsInCart.css";
 import { useState } from "react";
-import plus from "../../photos/plus2.png";
-import minus from "../../photos/minus.png";
-import { Product } from "../../constants/interfaces";
+import plus from "../../../photos/plus2.png";
+import minus from "../../../photos/minus.png";
+import { Product } from "../../../constants/interfaces";
 
 interface ProductsProps {
   product: Product;
@@ -10,12 +11,11 @@ interface ProductsProps {
   setCount: React.Dispatch<React.SetStateAction<{ [key: number]: number }>>;
 }
 
-export default function CartProducts({
+export default function Cart({
   product,
   count,
   setCount,
 }: ProductsProps) {
-
   const plusCount = (productId: number) => {
     setCount((prevCount) => ({
       ...prevCount,
@@ -35,7 +35,6 @@ export default function CartProducts({
       console.log("test");
     }
   }, [count]);
-  
 
   return (
     <div key={product.id} className="product-in-cart">

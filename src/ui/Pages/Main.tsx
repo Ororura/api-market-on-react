@@ -1,6 +1,6 @@
 import React from "react";
-import Sidebar from "../Components/Sidebar";
-import Products from "../Components/Products";
+import Sidebar from "../Components/Sidebar/Sidebar";
+import Products from "../Components/Products/Products";
 import { useState } from "react";
 import { Product } from "../../constants/interfaces";
 
