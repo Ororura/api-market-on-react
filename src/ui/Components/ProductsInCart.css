@@ -13,6 +13,10 @@
   text-align: center;
 }
 
+.product-in-cart::-webkit-scrollbar {
+  display: none;
+}
+
 .product-in-cart .img-frame {
   height: 153px;
   width: 140px;
