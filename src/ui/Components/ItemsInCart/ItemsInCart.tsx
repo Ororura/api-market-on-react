@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import "./ItemsInCart.css";
 import { useState } from "react";
-import plus from "../../../photos/plus2.png";
-import minus from "../../../photos/minus.png";
+import plus from "../Assets/Photos/plus2.png"
+import minus from "../Assets/Photos/minus.png";
 import { Product } from "../../../constants/interfaces";
 
 interface ProductsProps {

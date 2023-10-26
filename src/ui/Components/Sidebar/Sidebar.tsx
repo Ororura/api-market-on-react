@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../../photos/logo.png";
+import logo from "../Assets/Photos/logo.png";
 import "./Sidebar.css";
 import Cart from "../Cart/Cart";
 

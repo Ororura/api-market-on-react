@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Products.css";
-import vector from "../../../photos/vector.png";
-import filledVector from "../../../photos/filled_vector.png";
-import star from "../../../photos/star.png";
+import vector from "../Assets/Photos/vector.png";
+import filledVector from "../Assets/Photos/filled_vector.png";
+import star from "../Assets/Photos/star.png";
 import ProductsApi from "../../../services/ProductsApi";
 import { Product } from "../../../constants/interfaces";
 
