@@ -6,17 +6,14 @@ import star from "../Assets/Photos/star.png";
 import ProductsApi from "../../../services/ProductsApi";
 import { Product } from "../../../constants/interfaces";
 
+
 interface ProductsProps {
   count: { [key: number]: number };
   setCount: React.Dispatch<React.SetStateAction<{ [key: number]: number }>>;
   addToCart: (product: Product) => void;
 }
 
-export default function Products({
-  addToCart,
-  count,
-  setCount,
-}: ProductsProps) {
+export default function Products({ addToCart, count, setCount }: ProductsProps) {
   const [shopData, setShopData] = useState<Product[]>([]);
 
   const handleClick = (product: Product) => {
@@ -40,11 +37,7 @@ export default function Products({
       {shopData.map((product) => (
         <div className="product" key={product.id}>
           <div className="img-frame">
-            <img
-              className="img-product"
-              src={product.image}
-              alt={product.title}
-            />
+            <img className="img-product" src={product.image} alt={product.title} />
           </div>
           <p>Id: {product.id}</p>
           <p
