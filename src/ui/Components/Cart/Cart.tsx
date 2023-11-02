@@ -1,22 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Cart.css";
 import Cart from "../ItemsInCart/ItemsInCart";
-
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  category: string;
-  image: string;
-  count: number;
-  rating: Rating;
-}
-
-interface Rating {
-  rate: number;
-  count: number;
-}
+import { Product, Rating } from "../../../constants/interfaces";
+import { ProductContext } from "../../../core/Context";
 
 interface ProductsProps {
   cart: Product[];
@@ -24,21 +10,14 @@ interface ProductsProps {
   setCount: React.Dispatch<React.SetStateAction<{ [key: number]: number }>>;
 }
 
-export default function ProductsInCart({
-  cart,
-  count,
-  setCount,
-}: ProductsProps) {
+export default function ProductsInCart() {
+  const { cart, setCart } = useContext(ProductContext);
+  const { count, setCount } = useContext(ProductContext);
   const filteredCart = cart.filter((product) => count[product.id] > 0);
   return (
     <div className="products-cart">
       {filteredCart.map((product) => (
-        <Cart
-          key={product.id}
-          count={count}
-          setCount={setCount}
-          product={product}
-        ></Cart>
+        <Cart key={product.id} count={count} setCount={setCount} product={product}></Cart>
       ))}
     </div>
   );

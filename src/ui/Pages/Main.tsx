@@ -15,8 +15,8 @@ export default function Main() {
   };
   return (
     <div className="wrapper">
-      <Sidebar cart={cart} count={count} setCount={setCount}></Sidebar>
-      <Products addToCart={addToCart} count={count} setCount={setCount} />
+      <Sidebar></Sidebar>
+      <Products></Products>
     </div>
   );
 }

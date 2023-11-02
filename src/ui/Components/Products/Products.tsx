@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./Products.css";
 import vector from "../Assets/Photos/vector.png";
 import filledVector from "../Assets/Photos/filled_vector.png";
 import star from "../Assets/Photos/star.png";
 import ProductsApi from "../../../services/ProductsApi";
 import { Product } from "../../../constants/interfaces";
-
+import { ProductContext } from "../../../core/Context";
 
 interface ProductsProps {
   count: { [key: number]: number };
@@ -13,11 +13,17 @@ interface ProductsProps {
   addToCart: (product: Product) => void;
 }
 
-export default function Products({ addToCart, count, setCount }: ProductsProps) {
-  const [shopData, setShopData] = useState<Product[]>([]);
+export default function Products() {
+  const { cart, setCart } = useContext(ProductContext);
+  const { count, setCount } = useContext(ProductContext);
+  const { shopData, setShopData } = useContext(ProductContext);
+  const { getProducts } = useContext(ProductContext);
 
   const handleClick = (product: Product) => {
-    addToCart(product);
+    const existingProduct = cart.find((el) => el.id === product.id);
+    if (!existingProduct) {
+      setCart([...cart, product]);
+    }
     setCount((prevCount) => ({
       ...prevCount,
       [product.id]: prevCount[product.id] ? prevCount[product.id] + 1 : 1,
@@ -25,11 +31,8 @@ export default function Products({ addToCart, count, setCount }: ProductsProps) 
   };
 
   useEffect(() => {
-    ProductsApi().then((response) => {
-      if (response) {
-        setShopData(response.data);
-      }
-    });
+    console.log(cart);
+    getProducts();
   }, []);
 
   return (

@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "./ItemsInCart.css";
 import { useState } from "react";
 import plus from "../Assets/Photos/plus2.png";
 import minus from "../Assets/Photos/minus.png";
 import { Product } from "../../../constants/interfaces";
+import { ProductContext } from "../../../core/Context";
 
 interface ProductsProps {
   product: Product;
@@ -11,7 +12,9 @@ interface ProductsProps {
   setCount: React.Dispatch<React.SetStateAction<{ [key: number]: number }>>;
 }
 
-export default function Cart({ product, count, setCount }: ProductsProps) {
+export default function Cart({ product }: ProductsProps) {
+  const { count, setCount } = useContext(ProductContext);
+
   const plusCount = (productId: number) => {
     setCount((prevCount) => ({
       ...prevCount,
