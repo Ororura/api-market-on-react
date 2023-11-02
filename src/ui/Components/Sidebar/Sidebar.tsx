@@ -19,19 +19,15 @@ interface Rating {
   count: number;
 }
 
-interface ProductsProps {
-  cart: Product[];
-  count: { [key: number]: number };
-  setCount: React.Dispatch<React.SetStateAction<{ [key: number]: number }>>;
-}
+interface ProductsProps {}
 
-function Sidebar({ cart, count, setCount }: ProductsProps) {
+function Sidebar() {
   return (
     <div className="sidebar">
       <div className="icons-sidebar">
         <img id="logo" src={logo} width="60" height="64" alt=" " />
       </div>
-      <Cart cart={cart} count={count} setCount={setCount}></Cart>
+      <Cart></Cart>
     </div>
   );
 }
